@@ -15,7 +15,12 @@ git clone <url-del-repositori>
 cd it-sprint2-basics-ts
 ```
 
-2. Instal·la les dependències:
+2. » Desconnecta el teu repositori del repositori de IT Academy. Utilitza la següent ordre de git:
+```bash
+git remote rm origin
+```
+
+3. Instal·la les dependències:
 
 ```bash
 npm install
