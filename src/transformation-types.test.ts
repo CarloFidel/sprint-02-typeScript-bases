@@ -158,21 +158,21 @@ describe("Transformació: indexed access amb unions", () => {
   ];
 });
 
-// /*
-// Repte 7:
-// Utilitza indexed access types i unions per obtenir el tipus dels valors d'un array.
-// */
-// describe("Transformació: obtenir el tipus dels valors d'un array", () => {
-//   const fruits = ["apple", "banana", "orange"] as const;
+/*
+Repte 7:
+Utilitza indexed access types i unions per obtenir el tipus dels valors d'un array.
+*/
+describe("Transformació: obtenir el tipus dels valors d'un array", () => {
+  const fruits = ["apple", "banana", "orange"] as const;
 
-//   type AppleOrBanana = (typeof fruits)[0] | (typeof fruits)[1];
-//   type Fruit = (typeof fruits)[number];
+  type AppleOrBanana = (typeof fruits)[0] | (typeof fruits)[1];
+  type Fruit = (typeof fruits)[number];
 
-//   type tests = [
-//     Expect<Equal<AppleOrBanana, "apple" | "banana">>,
-//     Expect<Equal<Fruit, "apple" | "banana" | "orange">>,
-//   ];
-// });
+  type tests = [
+    Expect<Equal<AppleOrBanana, "apple" | "banana">>,
+    Expect<Equal<Fruit, "apple" | "banana" | "orange">>,
+  ];
+});
 
 // /*
 // Repte 8:
