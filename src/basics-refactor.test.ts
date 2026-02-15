@@ -1,89 +1,89 @@
-// import { assertType, describe, expect, expectTypeOf, it } from "vitest";
-// import { Equal, Expect } from "./helpers/type-utils";
-// import { U } from "vitest/dist/reporters-w_64AS5f.js";
+import { assertType, describe, expect, expectTypeOf, it } from "vitest";
+import { Equal, Expect } from "./helpers/type-utils";
+import { U } from "vitest/dist/reporters-w_64AS5f.js";
+
+/*
+Repte 1:
+Llegeix l'article:
+ ["Migrating from JavaScript" a la documentació de TypeScript](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html)
+ i mira si pots trobar com solucionar aquests errors de TypeScript.
+*/
+
+describe("Problema de nombres", () => {
+  it("Ha de sumar els dos nombres", () => {
+    const addTwoNumbers = (a: number, b: number) => {
+      return a + b;
+    };
+    expectTypeOf(addTwoNumbers).parameter(0).toBeNumber();
+    expectTypeOf(addTwoNumbers).parameter(1).toBeNumber();
+  });
+});
+
+/*
+Repte 2:
+Descobreix com tipar params com un objecte amb una clau first que sigui un nombre i una clau second que també sigui un nombre.
+*/
+
+describe("Problema de paràmetre objecte", () => {
+  interface Numbers {
+    first: number;
+    second: number;
+  }
+  it("Ha de sumar els dos nombres", () => {
+    const addTwoNumbers = (params: Numbers) => {
+      return params.first + params.second;
+    };
+    expect(
+      addTwoNumbers({
+        first: 2,
+        second: 4,
+      }),
+    ).toEqual(6);
+
+    expect(
+      addTwoNumbers({
+        first: 10,
+        second: 20,
+      }),
+    ).toEqual(30);
+    expectTypeOf(addTwoNumbers).parameter(0).toBeObject();
+  });
+});
 
 // /*
-// Repte 1:
-// Llegeix l'article:
-//  ["Migrating from JavaScript" a la documentació de TypeScript](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html)
-//  i mira si pots trobar com solucionar aquests errors de TypeScript.
+// Repte 3:
+// Has d'esbrinar com tipar l'objecte perquè 'last' sigui opcional.
 // */
 
-// describe("Problema de nombres", () => {
-//   it("Ha de sumar els dos nombres", () => {
-//     const addTwoNumbers = (a: number, b: number) => {
-//       return a + b;
-//     };
-//     expectTypeOf(addTwoNumbers).parameter(0).toBeNumber();
-//     expectTypeOf(addTwoNumbers).parameter(1).toBeNumber();
-//   });
-// });
+describe("Problema de propietats opcionals", () => {
+  interface NameParams {
+    first: string;
+    last?: string;
+  }
+  const getName = (params: NameParams) => {
+    if (params.last) {
+      return `${params.first} ${params.last}`;
+    }
+    return params.first;
+  };
 
-// /*
-// Repte 2:
-// Descobreix com tipar params com un objecte amb una clau first que sigui un nombre i una clau second que també sigui un nombre.
-// */
+  it("Ha de funcionar només amb el nom", () => {
+    const name = getName({
+      first: "Jen",
+    });
 
-// describe("Problema de paràmetre objecte", () => {
-//   interface Numbers {
-//     first: number;
-//     second: number;
-//   }
-//   it("Ha de sumar els dos nombres", () => {
-//     const addTwoNumbers = (params: Numbers) => {
-//       return params.first + params.second;
-//     };
-//     expect(
-//       addTwoNumbers({
-//         first: 2,
-//         second: 4,
-//       }),
-//     ).toEqual(6);
+    expect(name).toEqual("Jen");
+  });
 
-//     expect(
-//       addTwoNumbers({
-//         first: 10,
-//         second: 20,
-//       }),
-//     ).toEqual(30);
-//     expectTypeOf(addTwoNumbers).parameter(0).toBeObject();
-//   });
-// });
+  it("Ha de funcionar amb el nom i el cognom", () => {
+    const name = getName({
+      first: "Jen",
+      last: "Simmons",
+    });
 
-// // /*
-// // Repte 3:
-// // Has d'esbrinar com tipar l'objecte perquè 'last' sigui opcional.
-// // */
-
-// describe("Problema de propietats opcionals", () => {
-//   interface NameParams {
-//     first: string;
-//     last?: string;
-//   }
-//   const getName = (params: NameParams) => {
-//     if (params.last) {
-//       return `${params.first} ${params.last}`;
-//     }
-//     return params.first;
-//   };
-
-//   it("Ha de funcionar només amb el nom", () => {
-//     const name = getName({
-//       first: "Jen",
-//     });
-
-//     expect(name).toEqual("Jen");
-//   });
-
-//   it("Ha de funcionar amb el nom i el cognom", () => {
-//     const name = getName({
-//       first: "Jen",
-//       last: "Simmons",
-//     });
-
-//     expect(name).toEqual("Jen Simmons");
-//   });
-// });
+    expect(name).toEqual("Jen Simmons");
+  });
+});
 
 // /*
 // Repte 4:
@@ -172,6 +172,7 @@
 //     id: 1,
 //     firstName: "Jen",
 //     lastName: "Simmons",
+//     // @ts-expect-error
 //     role: "I_SHOULD_NOT_BE_ALLOWED",
 //   };
 // });
@@ -543,7 +544,7 @@
 
 //   const createThenGetUser = async (
 //     createUser: () => Promise<string>,
-//     getUser: (id: User['id']) => Promise<User>,
+//     getUser: (id: User["id"]) => Promise<User>,
 //   ): Promise<User> => {
 //     const userId: string = await createUser();
 
@@ -555,7 +556,7 @@
 //   it("Ha de crear l'usuari i després obtenir-lo", async () => {
 //     const user = await createThenGetUser(
 //       async () => "123",
-//       async (id: User['id']) => ({
+//       async (id: User["id"]) => ({
 //         id,
 //         firstName: "Jen",
 //         lastName: "Simmons",
