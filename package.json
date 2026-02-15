@@ -12,7 +12,7 @@
     "vitest": "^1.6.1"
   },
   "scripts": {
-    "test": "npm run test:types && vitest --typecheck",
+    "test": "npm run test:types && vitest run --typecheck",
     "test:types": "tsc --noEmit",
     "prepare": "husky"
   }
