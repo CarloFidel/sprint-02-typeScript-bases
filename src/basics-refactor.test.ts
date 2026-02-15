@@ -366,47 +366,47 @@ describe("Problema de Record", () => {
   });
 });
 
-// /*
-// Repte 12:
-// Escriu la funció perquè els tests passin.
-// */
+/*
+Repte 12:
+Escriu la funció perquè els tests passin.
+*/
 
-// describe("Problema de filtratge amb typeof", () => {
-//   const coerceAmount = (amount: number | { amount: number }) => {
-//     if (typeof amount === "number") return amount;
-//     return amount.amount;
-//   };
+describe("Problema de filtratge amb typeof", () => {
+  const coerceAmount = (amount: number | { amount: number }) => {
+    if (typeof amount === "number") return amount;
+    return amount.amount;
+  };
 
-//   it("Ha de retornar l'import quan es passa un objecte", () => {
-//     expect(coerceAmount({ amount: 20 })).toEqual(20);
-//   });
+  it("Ha de retornar l'import quan es passa un objecte", () => {
+    expect(coerceAmount({ amount: 20 })).toEqual(20);
+  });
 
-//   it("Ha de retornar l'import quan es passa un nombre", () => {
-//     expect(coerceAmount(20)).toEqual(20);
-//   });
-// });
+  it("Ha de retornar l'import quan es passa un nombre", () => {
+    expect(coerceAmount(20)).toEqual(20);
+  });
+});
 
-// /*
-// Repte 13:
-// Has de convertir el tipus 'unknown' en un tipus on sàpigues què és.
-// Pista: hi ha diverses maneres de resoldre aquest repte, prova diferents opcions!
-// */
+/*
+Repte 13:
+Has de convertir el tipus 'unknown' en un tipus on sàpigues què és.
+Pista: hi ha diverses maneres de resoldre aquest repte, prova diferents opcions!
+*/
 
-// describe("Problema de blocs catch", () => {
-//   const tryCatchDemo = (state: "fail" | "succeed") => {
-//     try {
-//       if (state === "fail") {
-//         throw new Error("Failure!");
-//       }
-//     } catch (e: unknown) {
-//       return e instanceof Error ? e.message : "Unknown error!";
-//     }
-//   };
+describe("Problema de blocs catch", () => {
+  const tryCatchDemo = (state: "fail" | "succeed") => {
+    try {
+      if (state === "fail") {
+        throw new Error("Failure!");
+      }
+    } catch (e: unknown) {
+      return e instanceof Error ? e.message : "Unknown error!";
+    }
+  };
 
-//   it("Ha de retornar el missatge quan falla", () => {
-//     expect(tryCatchDemo("fail")).toEqual("Failure!");
-//   });
-// });
+  it("Ha de retornar el missatge quan falla", () => {
+    expect(tryCatchDemo("fail")).toEqual("Failure!");
+  });
+});
 
 // /*
 // Repte 14:
