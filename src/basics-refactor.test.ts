@@ -478,28 +478,28 @@ describe("Problema d'intersecció de tipus", () => {
   console.log(userAndPosts.posts[0]);
 });
 
-// /*
-// Repte 16:
-// Com creem un nou tipus d'objecte amb NOMÉS les propietats firstName i lastName de User?
-// Llegeix la documentació de TypeScript sobre Utility Types per veure què pots trobar.
-// */
+/*
+Repte 16:
+Com creem un nou tipus d'objecte amb NOMÉS les propietats firstName i lastName de User?
+Llegeix la documentació de TypeScript sobre Utility Types per veure què pots trobar.
+*/
 
-// describe("Problema d'Omit i Pick", () => {
-//   interface User {
-//     id: string;
-//     firstName: string;
-//     lastName: string;
-//   }
+describe("Problema d'Omit i Pick", () => {
+  interface User {
+    id: string;
+    firstName: string;
+    lastName: string;
+  }
 
-//   /**
-//    * Com creem un nou tipus d'objecte amb NOMÉS les propietats
-//    * firstName i lastName de User?
-//    */
+  /**
+   * Com creem un nou tipus d'objecte amb NOMÉS les propietats
+   * firstName i lastName de User?
+   */
 
-//   type MyType = Pick<User, "firstName" | "lastName">;
+  type MyType = Pick<User, "firstName" | "lastName">;
 
-//   type tests = [Expect<Equal<MyType, { firstName: string; lastName: string }>>];
-// });
+  type tests = [Expect<Equal<MyType, { firstName: string; lastName: string }>>];
+});
 
 // /*
 // Repte 17:
