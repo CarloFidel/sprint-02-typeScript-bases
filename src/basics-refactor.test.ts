@@ -408,37 +408,37 @@ describe("Problema de blocs catch", () => {
   });
 });
 
-// /*
-// Repte 14:
-//  Aquí, la propietat id es comparteix entre les tres
-//  interfícies. Pots trobar una manera de refactoritzar això per
-//  fer-ho més DRY?
-// */
+/*
+Repte 14:
+ Aquí, la propietat id es comparteix entre les tres
+ interfícies. Pots trobar una manera de refactoritzar això per
+ fer-ho més DRY?
+*/
 
-// describe("Problema d'herència amb extends", () => {
-//   interface User {
-//     id: string;
-//     firstName: string;
-//     lastName: string;
-//   }
+describe("Problema d'herència amb extends", () => {
+  interface User {
+    id: string;
+    firstName: string;
+    lastName: string;
+  }
 
-//   interface Post {
-//     id: User["id"];
-//     title: string;
-//     body: string;
-//   }
+  interface Post {
+    id: User["id"];
+    title: string;
+    body: string;
+  }
 
-//   interface Comment {
-//     id: User["id"];
-//     comment: string;
-//   }
+  interface Comment {
+    id: User["id"];
+    comment: string;
+  }
 
-//   type tests = [
-//     Expect<Equal<User, { id: string; firstName: string; lastName: string }>>,
-//     Expect<Equal<Post, { id: string; title: string; body: string }>>,
-//     Expect<Equal<Comment, { id: string; comment: string }>>,
-//   ];
-// });
+  type tests = [
+    Expect<Equal<User, { id: string; firstName: string; lastName: string }>>,
+    Expect<Equal<Post, { id: string; title: string; body: string }>>,
+    Expect<Equal<Comment, { id: string; comment: string }>>,
+  ];
+});
 
 // /*
 // Repte 15:
