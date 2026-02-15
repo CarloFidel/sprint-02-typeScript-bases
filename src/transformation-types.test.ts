@@ -98,65 +98,65 @@ describe("Transformació: obtenir les claus d'un objecte", () => {
   type tests = [Expect<Equal<TestingFramework, "vitest" | "jest" | "mocha">>];
 });
 
-// /*
-// Repte 5:
-// Utilitza indexed access types per obtenir el tipus d'una propietat concreta d'un objecte.
-// */
-// describe("Transformació: indexed access amb objectes", () => {
-//   const fakeDataDefaults = {
-//     String: "Default string",
-//     Int: 1,
-//     Float: 1.14,
-//     Boolean: true,
-//     ID: "id",
-//   };
+/*
+Repte 5:
+Utilitza indexed access types per obtenir el tipus d'una propietat concreta d'un objecte.
+*/
+describe("Transformació: indexed access amb objectes", () => {
+  const fakeDataDefaults = {
+    String: "Default string",
+    Int: 1,
+    Float: 1.14,
+    Boolean: true,
+    ID: "id",
+  };
 
-//   type StringType = (typeof fakeDataDefaults)["String"];
-//   type IntType = (typeof fakeDataDefaults)["Int"];
-//   type FloatType = (typeof fakeDataDefaults)["Float"];
-//   type BooleanType = (typeof fakeDataDefaults)["Boolean"];
-//   type IDType = (typeof fakeDataDefaults)["ID"];
+  type StringType = (typeof fakeDataDefaults)["String"];
+  type IntType = (typeof fakeDataDefaults)["Int"];
+  type FloatType = (typeof fakeDataDefaults)["Float"];
+  type BooleanType = (typeof fakeDataDefaults)["Boolean"];
+  type IDType = (typeof fakeDataDefaults)["ID"];
 
-//   type tests = [
-//     Expect<Equal<StringType, string>>,
-//     Expect<Equal<IntType, number>>,
-//     Expect<Equal<FloatType, number>>,
-//     Expect<Equal<BooleanType, boolean>>,
-//     Expect<Equal<IDType, string>>,
-//   ];
-// });
+  type tests = [
+    Expect<Equal<StringType, string>>,
+    Expect<Equal<IntType, number>>,
+    Expect<Equal<FloatType, number>>,
+    Expect<Equal<BooleanType, boolean>>,
+    Expect<Equal<IDType, string>>,
+  ];
+});
 
-// /*
-// Repte 6:
-// Utilitza indexed access types per obtenir el tipus d'una propietat concreta d'una unió d'objectes.
-// */
-// describe("Transformació: indexed access amb unions", () => {
-//   const programModeEnumMap = {
-//     GROUP: "group",
-//     ANNOUNCEMENT: "announcement",
-//     ONE_ON_ONE: "1on1",
-//     SELF_DIRECTED: "selfDirected",
-//     PLANNED_ONE_ON_ONE: "planned1on1",
-//     PLANNED_SELF_DIRECTED: "plannedSelfDirected",
-//   } as const;
+/*
+Repte 6:
+Utilitza indexed access types per obtenir el tipus d'una propietat concreta d'una unió d'objectes.
+*/
+describe("Transformació: indexed access amb unions", () => {
+  const programModeEnumMap = {
+    GROUP: "group",
+    ANNOUNCEMENT: "announcement",
+    ONE_ON_ONE: "1on1",
+    SELF_DIRECTED: "selfDirected",
+    PLANNED_ONE_ON_ONE: "planned1on1",
+    PLANNED_SELF_DIRECTED: "plannedSelfDirected",
+  } as const;
 
-//   type IndividualKeys =
-//     | "ONE_ON_ONE"
-//     | "SELF_DIRECTED"
-//     | "PLANNED_ONE_ON_ONE"
-//     | "PLANNED_SELF_DIRECTED";
+  type IndividualKeys =
+    | "ONE_ON_ONE"
+    | "SELF_DIRECTED"
+    | "PLANNED_ONE_ON_ONE"
+    | "PLANNED_SELF_DIRECTED";
 
-//   type IndividualProgram = (typeof programModeEnumMap)[IndividualKeys];
+  type IndividualProgram = (typeof programModeEnumMap)[IndividualKeys];
 
-//   type tests = [
-//     Expect<
-//       Equal<
-//         IndividualProgram,
-//         "1on1" | "selfDirected" | "planned1on1" | "plannedSelfDirected"
-//       >
-//     >,
-//   ];
-// });
+  type tests = [
+    Expect<
+      Equal<
+        IndividualProgram,
+        "1on1" | "selfDirected" | "planned1on1" | "plannedSelfDirected"
+      >
+    >,
+  ];
+});
 
 // /*
 // Repte 7:
